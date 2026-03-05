@@ -94,75 +94,7 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        // Show loading state
-        Swal.fire({
-            title: 'Enviando mensaje...',
-            text: 'Por favor espera un momento.',
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
-
-        try {
-            const response = await fetch("https://formsubmit.co/ajax/psic.riverotorres@gmail.com", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    "Nombre": formData.name,
-                    "Email": formData.email,
-                    "Teléfono": formData.phone,
-                    "Servicio de Interés": formData.service,
-                    "Motivo": formData.reason,
-                    "Mensaje": formData.message,
-                    _subject: `Nueva consulta de ${formData.name}`,
-                    _template: "box",
-                    _captcha: "false"
-                })
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Mensaje enviado!',
-                    text: 'Gracias por escribirme. Te responderé a la brevedad posible.',
-                    confirmButtonColor: 'var(--color-secondary)',
-                    confirmButtonText: 'Cerrar'
-                });
-
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    service: 'Psicoterapia Adultos',
-                    reason: '',
-                    message: ''
-                });
-            } else {
-                throw new Error('Error en el envío');
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Hubo un problema al enviar el mensaje. Por favor intenta nuevamente o contáctame directamente por Instagram.',
-                confirmButtonColor: 'var(--color-primary)'
-            });
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
+    const handleSubmit = () => {};
     return (
         <section id="contacto" style={styles.section}>
             <div style={styles.container}>
@@ -172,7 +104,7 @@ const Contact = () => {
                         Para consultas o agendar una cita, por favor completa el siguiente formulario.
                     </p>
                 </div>
-                <form onSubmit={handleSubmit} style={styles.form}>
+                <form action="https://formsubmit.co/psic.riverotorres@gmail.com" method="POST" style={styles.form}>
                     <div style={styles.inputGroup}>
                         <label style={styles.label} htmlFor="name">Nombre completo</label>
                         <input
