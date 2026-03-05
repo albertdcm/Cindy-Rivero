@@ -33,19 +33,8 @@ const Header = () => {
             zIndex: 1000,
             padding: scrolled ? '1rem 0' : '1.5rem 0',
         },
-        nav: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            position: 'relative',
-        },
-        logoContainer: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            textDecoration: 'none',
-            zIndex: 1002, // Ensure logo is above mobile menu
-        },
+        nav: { position:"fixed", top:0, left:0, width:"100%", height:"100%", background:"rgba(255,255,255,0.95)", backdropFilter:"blur(10px)", display:"flex", flexDirection:"column", padding:"20px 24px", zIndex:1000 },
+        logoContainer: { display:"flex", alignItems:"center", gap:"10px", marginBottom:"28px" },
         logoImage: {
             height: '40px',
             width: 'auto',
