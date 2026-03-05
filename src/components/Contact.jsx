@@ -104,7 +104,7 @@ const Contact = () => {
                         Para consultas o agendar una cita, por favor completa el siguiente formulario.
                     </p>
                 </div>
-                <form action="https://formsubmit.co/psic.riverotorres@gmail.com" method="POST" style={styles.form}>
+                <form action="https://formsubmit.co/856961397802db252444f7676b7a35c7" method="POST" style={styles.form}>
                     <div style={styles.inputGroup}>
                         <label style={styles.label} htmlFor="name">Nombre completo</label>
                         <input
@@ -206,7 +206,8 @@ const Contact = () => {
                     >
                         {isSubmitting ? 'Enviando...' : 'Solicitar información'}
                     </button>
-                </form>
+                  <input type="hidden" name="_template" value="table" />
+</form>
             </div>
         </section>
     );
